@@ -1,6 +1,6 @@
 <template>
     <div class="movie-detail-overlay" @click="closeDetail">
-        <div class="movie-detail-container" @click.stop>
+        <div class="movie-detail-container" @click="closeDetail">
             <v-card>
                 <v-card-title style="text-align: center;">
                     {{ movieList.title }}

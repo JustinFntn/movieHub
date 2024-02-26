@@ -1,4 +1,5 @@
 <template>
+  <MovieSearch @searchMovieEmit="" />
   <MovieList @showMovieDetail="showMovieDetail" />
   <MovieDetail v-if="show" :movieId="movieId" @closeDetail="closeDetail" />
 </template>
@@ -21,7 +22,8 @@ export default {
   data() {
     return {
       movieId: null,
-      show: false
+      show: false,
+      search: ''
     }
   },
 
@@ -33,6 +35,10 @@ export default {
 
     closeDetail() {
       this.show = false;
+    },
+
+    setMovieSearch(search) {
+      this.search = search;
     }
   }
 }
