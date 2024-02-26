@@ -1,9 +1,7 @@
 <template>
-<v-container class="elevation-5">
-  <router-view/>
-</v-container>
+  <v-container class="">
+    <router-view />
+  </v-container>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
