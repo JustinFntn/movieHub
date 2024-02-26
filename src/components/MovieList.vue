@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-row justify="center">
             <v-col v-for="movie in movielist.results" sm="6" md="3" xs="12">
-                <Movie :movie="movie" />
+                <Movie :movie="movie" @click="showMovieDetailEmit(movie.id)" />
             </v-col>
         </v-row>
     </v-container>
@@ -26,6 +26,12 @@ export default {
         }
     },
 
+    methods: {
+        showMovieDetailEmit(id) {
+            this.$emit('showMovieDetail', id);
+        }
+    },
+
     beforeMount() {
 
         const options = {
@@ -39,7 +45,7 @@ export default {
             },
             headers: {
                 accept: 'application/json',
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZTE2MjVjMzNlOWQ0MWIxMTlkNDcyYjNiNjk5YzVlMyIsInN1YiI6IjY1YzEwMmMyYTM1YzhlMDE2M2Q2NWI5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ucy3tzvihJ6dMpfVpZEBNdzL6n_yeLqCnhueekQQZ-k'
+                Authorization: 'Bearer ' + config.api_key
             }
         };
 
@@ -47,7 +53,6 @@ export default {
             .request(options)
             .then((response) => {
                 this.movielist = response.data;
-                console.log(this.movielist);
             })
             .catch((error) => {
                 console.error(error);
