@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-col>
-            <v-card class="card" width="200" hover @click="reveal = true">
+            <v-card class="card" width="200" hover>
                 <v-img :src="config.url.photo_path + movie.poster_path"></v-img>
                 <v-card-title>{{ movie.title }}</v-card-title>
                 <v-card-subtitle>{{ movie.overview }}</v-card-subtitle>
@@ -28,6 +28,7 @@ export default {
             reveal: false
         }
     },
+
 
     beforeMount() {
 
