@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-row justify="center">
             <v-col v-for="movie in movielist.results" sm="6" md="3" xs="12">
-                <Movie :movie="movie" />
+                <Movie :movie="movie" @click="showMovieDetailEmit(movie.id)" />
             </v-col>
         </v-row>
     </v-container>
@@ -23,6 +23,12 @@ export default {
     data() {
         return {
             movielist: [],
+        }
+    },
+
+    methods: {
+        showMovieDetailEmit(id) {
+            this.$emit('showMovieDetail', id);
         }
     },
 
@@ -47,7 +53,6 @@ export default {
             .request(options)
             .then((response) => {
                 this.movielist = response.data;
-                console.log(this.movielist);
             })
             .catch((error) => {
                 console.error(error);
